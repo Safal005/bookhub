@@ -1,0 +1,79 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css);
+body{
+    background-color: rgb(245, 244, 244);
+}
+.nav{
+    background-color: wheat;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding:  0;
+    text-align: center;
+}
+.nav-title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 47px;
+    margin: 0;
+    
+}
+
+.head-title{
+    
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 37px;
+    color: rgb(199, 57, 104);
+
+}
+.main{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 0 30px;
+
+}
+.Book{
+    margin-bottom: 17px;
+    width: 200px;
+    height: auto;
+    border: 1px solid hsla(0, 2%, 16%, 0.165);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 5px 5px 5px hsla(0, 15%, 94%, 0.405);
+    transition:transform 0.3s ease,box-shadow 0.3s ease ;
+}
+.Book:hover{
+    transform:scale(1.05);
+}
+.Book-img{
+    width: 70%;
+    margin-top: 17px;
+    margin-bottom: 3px;
+    border-radius: 10px;
+}
+.Book-title{
+    padding: 3px;
+    text-align: center;
+}
+.footer{
+    background-color: wheat;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer-text{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+}
+.footer-icon{
+    width: 17px;
+}
