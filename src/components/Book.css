@@ -1,0 +1,33 @@
+
+.main{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 0 30px;
+
+}
+.Book{
+    margin-bottom: 17px;
+    width: 200px;
+    height: auto;
+    border: 1px solid hsla(0, 2%, 16%, 0.165);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 5px 5px 5px hsla(0, 15%, 94%, 0.405);
+    transition:transform 0.3s ease,box-shadow 0.3s ease ;
+}
+.Book:hover{
+    transform:scale(1.05);
+}
+.Book-img{
+    width: 70%;
+    margin-top: 17px;
+    margin-bottom: 3px;
+    border-radius: 10px;
+}
+.Book-title{
+    padding: 3px;
+    text-align: center;
+}
