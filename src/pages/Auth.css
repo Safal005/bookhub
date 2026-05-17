@@ -23,6 +23,11 @@
     gap: 20px;
     box-shadow: 0 4px 15px #ccc;
 }
+.user-admin-btn{
+    background-color: red;
+    color: white;
+    font-size: 19px;
+}
 .login-container h1{
     font-size: 30px;
     color: white;
@@ -56,6 +61,27 @@
     border-color: red;
     box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
     transition: 0.3s;
+}
+.password-input-wrapper{
+    position: relative;
+    width: 100%;
+}
+.password-input-wrapper .input-field{
+    width: 100%;
+    padding-right: 45px;
+}
+.password-toggle-icon{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    font-size: 1.1rem;
+    z-index: 10;
+}
+.password-toggle-icon:hover{
+    color: #000;
 }
 .login-btn{
     color: white;
