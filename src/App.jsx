@@ -1,12 +1,18 @@
+import { Routes, Route } from 'react-router-dom';
 import React from 'react';
+import Login from './pages/Login.jsx';
+import SignUp from './pages/SignUp.jsx';
+import ForgotPassword from './pages/Forgotpassword.jsx';
 import Dashboard from './pages/Dashboard.jsx';
-import Login from './pages/Login.jsx'
+
 function App() {
   return (
-    <>
-      {/* <Dashboard /> */}
-    <Login/>
-    </>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/SignUp" element={<SignUp />} />
+      <Route path="/ForgotPassword" element={<ForgotPassword />} />
+      <Route path="/Dashboard" element={<Dashboard />} />
+    </Routes>
   );
 }
 
