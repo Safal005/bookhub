@@ -40,7 +40,7 @@ function ForgotPassword(){
                     <button type='submit' className='login-btn'>Send OTP</button>
                     <div className='links-group'>
                         <Link to="/SignUp" className='signup-login'>Sign-Up</Link>
-                        <Link to="/" className='signup-login'>Login</Link>
+                        <Link to="/Login" className='signup-login'>Login</Link>
                     </div>
 
                 </form>

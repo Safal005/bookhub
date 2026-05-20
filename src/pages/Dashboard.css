@@ -1,26 +1,163 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css);
-body{
-    background-color: rgb(245, 244, 244);
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.nav{
-    background-color: wheat;
+.navbar-containers{
     height: 100px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0;
-    margin-bottom: 30px;
+    justify-content:space-between;
+    align-items:center;
+    background-color: #121212CC; /* 80% transparent off-black */
+    backdrop-filter: blur(10px);   /* The "Glass" effect */
     position: sticky;
     top: 0;
-    z-index: 1000;
-    padding:  0;
-    text-align: center;
+    padding: 0 25px;
+    z-index: 200;
+
 }
-.nav-title{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 47px;
-    margin: 0;
+.logo{
+    font-size: 27px;
+    text-decoration: none;
+    color: #D32F2F;
+    transition: all 0.3s ease;
+}
+.logo:hover{
+    color: red;
+}
+.nav-links-container{
+    display: flex;
+    gap: 10px;
     
+}
+.nav-links{
+    text-decoration: none;
+    font-size: 20px;
+    color: #b0b0b0;
+    transition: all 0.3s ease;
+}
+.nav-links:hover{
+    filter: brightness(1.3);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4); 
+}
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #1e1e1e;
+    border-radius: 20px;
+    padding: 6px 15px;
+    border: 1px solid #333;
+    max-width: 250px;
+    flex: 1;
+    margin: 0 20px;
+}
+.search-container input{
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #e0e0e0;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    margin-left: 10px;
+    padding: 0;
+    width: 100%;
+}
+
+.search-icon {
+    color: #888;
+    font-size: 0.9rem;
+    background-color: #1e1e1e;
+}
+.profile-trigger{
+    background-color: #1e1e1e;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    transition: all 0.3s ease;
+
+}
+.profile-trigger:hover{
+    background-color: #252525;
+    box-shadow: 0 0 12px rgba(216, 204, 204, 0.3); 
+}
+.profile-trigger i{
+    font-size: 24px;
+    color: #b0b0b0;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+.profile-trigger i:hover{
+    filter: brightness(1.3);
+}
+
+.profile-dropdown{
+    position: relative;
+}
+.dropdown-menu{
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background-color: #121212;
+    border: 1px solid #333;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    white-space: nowrap;
+    border-radius: 8px;
+    z-index: 100;
+    min-width: 200px;
+}   
+.dropdown-menu p{
+    color: #b0b0b0;
+    text-align: center;
+    font-size: 15px;
+}
+.dropdown-menu a{
+    text-decoration: none;
+    text-align: center;
+    color: #f0e9e9;
+}
+
+.dropdown-login{
+    background-color: #AD0000;
+    border-radius: 10px;
+    padding: 10px;
+    
+}
+.dropdown-login:hover{
+    background-color: #a30505;
+}
+.dropdown-register{
+    background-color: transparent;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 10px;
+}
+.dropdown-register:hover{
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+}
+
+.test{
+    color: #FF3B3F;
+}
+.test:hover{
+    
+    color: #D32F2F;
+}
+.main{
+    background-color: #121212;
+}
+.welcome-section{
+    background-color: #121212;
 }
 
 .head-title{
@@ -28,19 +165,23 @@ body{
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 37px;
-    color: rgb(199, 57, 104);
-
+    color: #FF3B3F;
 }
-.footer{
-    background-color: wheat;
+
+.footer {
+    background-color: #121212; 
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-top: 1px solid #333; 
+    color: #b0b0b0;
 }
-.footer-text{
+
+.footer-text {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 17px;
+    font-size: 14px; 
+    margin-right: 20px;
 }
 .footer-icon{
     width: 17px;

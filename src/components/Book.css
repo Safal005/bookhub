@@ -4,7 +4,7 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
     padding: 0 30px;
-
+    
 }
 .Book{
     margin-bottom: 17px;
@@ -17,9 +17,10 @@
     flex-direction: column;
     box-shadow: 5px 5px 5px hsla(0, 15%, 94%, 0.405);
     transition:transform 0.3s ease,box-shadow 0.3s ease ;
+    background-color: #1E1E1E;
 }
 .Book:hover{
-    transform:scale(1.05);
+    transform:scale(0.9);
 }
 .Book-img{
     width: 70%;
@@ -30,4 +31,6 @@
 .Book-title{
     padding: 3px;
     text-align: center;
+    color: #E0E0E0;
+    background-color: #1E1E1E;
 }

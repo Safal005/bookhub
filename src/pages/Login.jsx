@@ -15,7 +15,7 @@ function Login(){
             const user= JSON.parse (savedData);
             if (user.username==username && user.password==password){
                 alert('Login Successful!');
-                navigate('/Dashboard');
+                navigate('/');
             }
             else{
                 alert("Incorrect username and password!");

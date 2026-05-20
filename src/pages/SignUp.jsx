@@ -20,7 +20,7 @@ function SignUp(){
         };
         localStorage.setItem("registeredUser",JSON.stringify(userData));
         alert("Registration Successfull!")
-        navigate("/");
+        navigate("/Login");
     }
     return(
         <>
@@ -58,7 +58,7 @@ function SignUp(){
                     <button type='submit' className='login-btn'>Register</button>
                     <div className='links-group'>
                         <p>Forgot Password? <Link to="/ForgotPassword">Click here!</Link></p>
-                        <Link to="/" className='signup-login'>Login</Link>
+                        <Link to="/Login" className='signup-login'>Login</Link>
                     </div>
 
                 </form>
