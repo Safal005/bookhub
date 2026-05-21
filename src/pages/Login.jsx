@@ -4,8 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 function Login(){
     
     const [showPassword, setShowPassword] = useState(false);
-    const [password, setPassword] = useState();
-    const [username, setUsername] = useState();
+    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("");
     const navigate = useNavigate();
 
     const handleLogin = (e) =>{
@@ -15,6 +15,7 @@ function Login(){
             const user= JSON.parse (savedData);
             if (user.username==username && user.password==password){
                 alert('Login Successful!');
+                localStorage.setItem("username", user.username);
                 navigate('/');
             }
             else{

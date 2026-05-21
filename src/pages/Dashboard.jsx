@@ -15,28 +15,39 @@ import rdpd from '../assets/rdpd.jpg';
 function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
   useEffect(() => {
-    const handleOutsideClick = (e) => {
+    const storedUser = localStorage.getItem("username");
+    if (storedUser) {
+      setUsername(storedUser);
+      setIsLoggedIn(true);
+    }
 
+    const handleOutsideClick = (e) => {
       const isTrigger = e.target.closest('.profile-trigger');
       const isMenu = e.target.closest('.dropdown-menu');
-
       if (!isTrigger && !isMenu) {
         setIsOpen(false);
       }
     };
 
     document.addEventListener('mousedown', handleOutsideClick);
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
   }, []);
+
+
+  const handleLogout = () => {
+    localStorage.removeItem("username");
+    setIsLoggedIn(false);
+    setUsername("");
+  };
 
   return (
     <>
       <div className='navbar-containers'>
         <div className='logo-container'>
-          <Link to="/Login" className='logo'>Safal's E Book</Link>
+          <Link to="/" className='logo'>Safal's E Book</Link>
         </div>
 
         <div className='search-container'>
@@ -56,13 +67,26 @@ function Dashboard() {
             <i className="fa-solid fa-circle-user"></i>
           </button>
           
-          {isOpen && (
-            <div className='dropdown-menu'>
-              <p>Account</p>
-              <Link to="/Login" className='dropdown-login'>Login</Link>
-              <Link to="/SignUp" className='dropdown-register'>Register</Link>
-            </div>
-          )}
+        {isOpen && (
+          <div className={`dropdown-menu ${isLoggedIn ? 'logged-in' : ''}`}>
+            {isLoggedIn ? (
+              <>
+                <p >{username}</p>
+                <Link to="/" className='dropdown-login' onClick={handleLogout}>
+                  Logout
+                </Link>
+              </>
+            ) : (
+              <>
+                <p>Account</p>
+                <Link to="/Login" className='dropdown-login'>Login</Link>
+                <Link to="/SignUp" className='dropdown-register'>Register</Link>
+              </>
+            )}
+          </div>
+        )}
+
+          
         </div>
       </div>
 
