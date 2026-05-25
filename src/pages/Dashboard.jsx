@@ -42,7 +42,7 @@ function Dashboard() {
     setIsLoggedIn(false);
     setUsername("");
   };
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <>
       <div className='navbar-containers'>
@@ -55,13 +55,27 @@ function Dashboard() {
           <input type="text" placeholder='Search Books...' />
         </div>
 
-        <div className='nav-links-container'>
-          <Link to="/Home" className='nav-links'>Home</Link>
-          <Link to="/About" className='nav-links'>About</Link>
-          <Link to="/Review" className='nav-links'>Review</Link>
-          <Link to="/Contact" className='nav-links'>Contact</Link>
-        </div>
+        <div className={`nav-links-container ${isMenuOpen ? 'active' : ''}`}>          
+          <Link to="/Home" className='nav-links' onClick={()=> setIsMenuOpen(false)}>Home</Link>
+          <Link to="/About" className='nav-links' onClick={()=> setIsMenuOpen(false)}>About</Link>
+          <Link to="/Review" className='nav-links' onClick={()=> setIsMenuOpen(false)}>Review</Link>
+          <Link to="/Contact" className='nav-links' onClick={()=> setIsMenuOpen(false)}>Contact</Link>
+        
 
+        <div className="mobile-account-links">
+          {isLoggedIn ? (
+            <>
+              <span className="mobile-username">{username}</span>
+              <button className='dropdown-login' onClick={() => { handleLogout(); setIsMenuOpen(false);}}>Logout</button>
+            </>
+          ) : (
+            <>
+              <Link to="/Login" className='dropdown-login' onClick={() => setIsMenuOpen(false)}>Login</Link>
+              <Link to="/SignUp" className='dropdown-register' onClick={() => setIsMenuOpen(false)}>Register</Link>
+            </>
+          )}
+        </div>
+        </div>
         <div className='profile-dropdown'>
           <button className='profile-trigger' onClick={() => setIsOpen(!isOpen)}>
             <i className="fa-solid fa-circle-user"></i>
@@ -72,7 +86,7 @@ function Dashboard() {
             {isLoggedIn ? (
               <>
                 <p >{username}</p>
-                <Link to="/" className='dropdown-login' onClick={handleLogout}>
+                <Link to="/" className='dropdown-login' onClick={() => { handleLogout(); setIsOpen(false); }}>
                   Logout
                 </Link>
               </>
@@ -84,10 +98,13 @@ function Dashboard() {
               </>
             )}
           </div>
-        )}
-
-          
+        )}    
         </div>
+
+        <div className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen) }>
+          <i className= {`fa-solid ${isMenuOpen ? `fa-xmark` :`fa-bars`}`}></i>
+        </div>
+
       </div>
 
       <div className="welcome-section">
