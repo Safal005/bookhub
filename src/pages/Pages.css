@@ -1,0 +1,257 @@
+
+.about-page {
+    background-color: #121212;
+    min-height: calc(100vh - 200px); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    color: #e0e0e0;
+}
+
+.about-container {
+    max-width: 1100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    background: #1e1e1e;
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid #333;
+}
+
+.about-content {
+    flex: 1;
+}
+
+.section-title {
+    color: #FF3B3F;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.about-text {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #b0b0b0;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.about-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.feature-item {
+    background: #252525;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    border: 1px solid #FF3B3F;
+}
+
+.feature-item i {
+    display: block;
+    font-size: 1.5rem;
+    color: #FF3B3F;
+    margin-bottom: 10px;
+}
+
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;          
+    max-width: 500px;     
+    height: auto;         
+    border-radius: 10px;  
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+    border: 1px solid #333;
+}
+
+
+.review-page {
+    background-color: #121212;
+    min-height: calc(100vh - 200px);
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.review-container {
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+}
+
+.review-subtitle {
+    color: #b0b0b0;
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+}
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.review-card {
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #333;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    text-align: left;
+}
+
+.review-card:hover {
+    transform: translateY(-10px);
+    border-color: #FF3B3F;
+}
+
+.review-stars {
+    color: #FFD700; 
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.review-comment {
+    font-style: italic;
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.review-author {
+    color: #FF3B3F;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.contact-page {
+    background-color: #121212;
+    padding: 100px 20px;
+    min-height: calc(100vh - 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-container {
+    max-width: 1000px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    background: #1e1e1e;
+    padding: 50px;
+    border-radius: 20px;
+    border: 1px solid #333;
+}
+
+.contact-info {
+    text-align: left;
+}
+
+.contact-description {
+    color: #b0b0b0;
+    margin: 20px 0 40px;
+    line-height: 1.6;
+}
+
+.contact-details .detail-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+}
+
+.detail-item i {
+    color: #FF3B3F;
+    font-size: 1.2rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+}
+
+.form-group label {
+    color: #e0e0e0;
+    font-size: 0.9rem;
+}
+
+.form-group input, .form-group textarea {
+    background: #2a2a2a;
+    border: 1px solid #444;
+    padding: 12px;
+    border-radius: 8px;
+    color: #fff;
+    font-family: inherit;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #FF3B3F;
+}
+
+.submit-btn {
+    background: #FF3B3F;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #e63539;
+}
+
+
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .about-image {
+        display: none; 
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+    .review-grid {
+        grid-template-columns: 1fr;
+    }    
+    .contact-container {
+        grid-template-columns: 1fr;
+        padding: 30px;
+    }
+}

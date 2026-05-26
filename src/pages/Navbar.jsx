@@ -1,0 +1,104 @@
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
+function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("username");
+    if (storedUser) {
+      setUsername(storedUser);
+      setIsLoggedIn(true);
+    }
+
+    const handleOutsideClick = (e) => {
+      const isTrigger = e.target.closest('.profile-trigger');
+      const isMenu = e.target.closest('.dropdown-menu');
+      if (!isTrigger && !isMenu) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("username");
+    setIsLoggedIn(false);
+    setUsername("");
+    setIsOpen(false);
+    setIsMenuOpen(false);
+    navigate("/"); 
+  };
+
+  return (
+    <div className='navbar-containers'>
+      <div className='logo-container'>
+        <Link to="/" className='logo'>Safal's E Book</Link>
+      </div>
+
+      <div className='search-container'>
+        <i className='fa-solid fa-magnifying-glass search-icon'></i>
+        <input type="text" placeholder='Search Books...' />
+      </div>
+
+      <div className={`nav-links-container ${isMenuOpen ? 'active' : ''}`}>          
+        <Link to="/" className='nav-links' onClick={() => setIsMenuOpen(false)}>Home</Link>
+        <Link to="/About" className='nav-links' onClick={() => setIsMenuOpen(false)}>About</Link>
+        <Link to="/Review" className='nav-links' onClick={() => setIsMenuOpen(false)}>Review</Link>
+        <Link to="/Contact" className='nav-links' onClick={() => setIsMenuOpen(false)}>Contact</Link>
+
+        <div className="mobile-account-links">
+          {isLoggedIn ? (
+            <>
+              <span className="mobile-username">{username}</span>
+              <button className='dropdown-login' onClick={handleLogout}>Logout</button>
+            </>
+          ) : (
+            <>
+              <Link to="/Login" className='dropdown-login' onClick={() => setIsMenuOpen(false)}>Login</Link>
+              <Link to="/SignUp" className='dropdown-register' onClick={() => setIsMenuOpen(false)}>Register</Link>
+            </>
+          )}
+        </div>
+      </div>
+
+      <div className='profile-dropdown'>
+        <button className='profile-trigger' onClick={() => setIsOpen(!isOpen)}>
+          <i className="fa-solid fa-circle-user"></i>
+        </button>
+        
+        {isOpen && (
+          <div className={`dropdown-menu ${isLoggedIn ? 'logged-in' : ''}`}>
+            {isLoggedIn ? (
+              <>
+                <p>{username}</p>
+                <button className='dropdown-login' onClick={handleLogout} style={{border: 'none', cursor: 'pointer'}}>
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <p>Account</p>
+                <Link to="/Login" className='dropdown-login' onClick={() => setIsOpen(false)}>Login</Link>
+                <Link to="/SignUp" className='dropdown-register' onClick={() => setIsOpen(false)}>Register</Link>
+              </>
+            )}
+          </div>
+        )}    
+      </div>
+
+      <div className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <i className={`fa-solid ${isMenuOpen ? `fa-xmark` : `fa-bars`}`}></i>
+      </div>
+    </div>
+  );
+}
+
+export default Navbar;
