@@ -2,41 +2,41 @@ import React from 'react';
 import Book from '../components/Book.jsx'; 
 import '../components/Book.css';
 import '../pages/Dashboard.css';
-import threesixtyfive from '../assets/365.jpg';
-import adaline from '../assets/adaline.jpg';
-import diary from '../assets/diary.jpg';
-import harrysorcerer from '../assets/harry.jpg';
-import lettinggo from '../assets/lettinggo.jpeg';
-import lionking from '../assets/lk.jpg';
-import rdpd from '../assets/rdpd.jpg';
+import {useState, useEffect} from 'react';
 
 function Dashboard() {
 
+const [books, setBooks] = useState([]);
+
+
+useEffect(() => {
+    const fetchBooks = async () => {
+        try {
+            const response = await fetch('https://openlibrary.org/search.json?q=programming&limit=10');
+            const data = await response.json();
+            setBooks(data.docs);
+            console.log("Books loaded successfully:", data.docs);
+        } 
+        
+        catch (error) {
+            console.error("The publisher didn't answer:", error);
+        }
+    };
+
+    fetchBooks();
+}, []);
+
+
+
   return (
     <>
-      
       <div className="welcome-section">
         <h1 className="head-title">Welcome to Safal's Book Library!📚</h1>
         <h1 className="head-title"><strong>Book Lists📖📖</strong></h1>
       </div>
 
       <div className="main">
-        <Book image={threesixtyfive} title="365 Days" />
-        <Book image={adaline} title="The Age of Adaline" />
-        <Book image={diary} title="The Diary of a Young Girl" />
-        <Book image={harrysorcerer} title="Harry Potter and The Sorcerer Stone" />
-        <Book image={lettinggo} title="Letting Go" />
-        <Book image={lionking} title="Lion King" />
-        <Book image={rdpd} title="Rich Dad Poor Dad" />
-        <Book image={adaline} title="The Age of Adaline" />
-        <Book image={adaline} title="The Age of Adaline" />
-        <Book image={adaline} title="The Age of Adaline" />
-        <Book image={adaline} title="The Age of Adaline" />
-        <Book image={adaline} title="The Age of Adaline" />
-        <Book image={adaline} title="The Age of Adaline" />
-        <Book image={adaline} title="The Age of Adaline" />
-        <Book image={adaline} title="The Age of Adaline" />
-        <Book image={adaline} title="The Age of Adaline" />
+
       </div>
 
       <div className="footer">
