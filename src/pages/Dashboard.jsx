@@ -26,8 +26,6 @@ useEffect(() => {
     fetchBooks();
 }, []);
 
-
-
   return (
     <>
       <div className="welcome-section">
@@ -35,10 +33,20 @@ useEffect(() => {
         <h1 className="head-title"><strong>Book Lists📖📖</strong></h1>
       </div>
 
-      <div className="main">
+<div className="main">
+  {books.length > 0 ? (
+    books.map((book) => (
 
-      </div>
-
+      <Book 
+        key={book.key} // 
+        title={book.title} 
+        image={book.cover_i ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : "https://via.placeholder.com/150"} 
+      />
+    ))
+  ) : (
+    <p>Loading the library...</p>
+  )}
+</div>
       <div className="footer">
         <p className="footer-text">&copy; 2025 Safal Khanal. All rights reserved. </p>
         <div className="footer-icons">
