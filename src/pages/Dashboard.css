@@ -146,26 +146,65 @@
     border: 1px solid #444;
 }
 
-.test{
-    color: #FF3B3F;
+.welcome-section {
+    position: relative;
+    width: 100%;
+    height: 200px; 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1200&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    margin-bottom: 40px; 
 }
-.test:hover{
-    
-    color: #D32F2F;
+.welcome-section .head-title {
+    color: #e0e0e0; 
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 5px 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); 
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
 }
-.main{
-    background-color: #121212;
-}
-.welcome-section{
-    background-color: #121212;
+.welcome-section .head-title strong {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #f0a500; 
 }
 
-.head-title{
-    
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 37px;
-    color: #FF3B3F;
+.main {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.main-container {
+    width: 100%;
+    margin-bottom: 50px; 
+    padding: 0 30px;
+}
+
+
+.main-container h3 {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 20px; 
+    border-left: 4px solid #D32F2F;
+    padding-left: 10px;
+}
+
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    width: 100%;
 }
 .hamburger{
     display: none;
@@ -194,6 +233,8 @@
 .footer-icon{
     width: 17px;
 }
+
+
 @media(max-width:717px){
 
     .hamburger {
