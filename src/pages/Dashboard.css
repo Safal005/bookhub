@@ -153,33 +153,41 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1200&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
-    background-attachment: scroll; 
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
     padding: 0 20px;
     box-sizing: border-box;
     margin-bottom: 40px; 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .welcome-section .head-title {
     color: #e0e0e0; 
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 700;
+    letter-spacing: 1px;
     margin: 5px 0;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); 
     font-family: 'Poppins', 'Segoe UI', sans-serif;
 }
-.welcome-section .head-title strong {
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: #f0a500; 
+.welcome-section .head-title span {
+    font-size: 2.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background: linear-gradient(to right, #ffe066 0%, #f0a500 50%, #b37400 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.7));
+    display: block;
 }
 
 .main {
     width: 100%;
-    padding: 20px 0;
+    padding: 20px 25px;
 }
 
 .main-container {
@@ -201,11 +209,18 @@
 
 
 .books-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    width: 100%;
+    display: flex;            
+    gap: 20px;
+    overflow-x: auto;         
+    overflow-y: hidden;       
+    padding: 10px 5px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; 
 }
+.books-grid::-webkit-scrollbar {
+    display: none; 
+}
+
 .hamburger{
     display: none;
     cursor: pointer;
@@ -215,6 +230,9 @@
 .mobile-account-links{
     display: none;
 }
+
+
+
 .footer {
     background-color: #121212; 
     height: 100px;

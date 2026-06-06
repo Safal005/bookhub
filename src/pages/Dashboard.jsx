@@ -19,11 +19,11 @@ function Dashboard() {
 
         const [topRes, storyRes, scifiRes, historyRes, programmingRes] =
           await Promise.all([
-            fetch("https://openlibrary.org/subjects/romance.json?limit=8"),
-            fetch("https://openlibrary.org/subjects/fiction.json?limit=8"),
-            fetch("https://openlibrary.org/subjects/science_fiction.json?limit=8"),
-            fetch("https://openlibrary.org/subjects/history.json?limit=8"),
-            fetch("https://openlibrary.org/subjects/computer_science.json?limit=8"),
+            fetch("https://openlibrary.org/subjects/romance.json?limit=16"),
+            fetch("https://openlibrary.org/subjects/fiction.json?limit=16"),
+            fetch("https://openlibrary.org/subjects/science_fiction.json?limit=16"),
+            fetch("https://openlibrary.org/subjects/history.json?limit=16"),
+            fetch("https://openlibrary.org/subjects/computer_science.json?limit=16"),
           ]);
 
         const topData = await topRes.json();
@@ -62,16 +62,15 @@ function Dashboard() {
       <div className="welcome-section">
         <h1 className="head-title">
           {localStorage.getItem("username")
-            ? `Welcome back, ${localStorage.getItem("username")}! 📚`
+            ? `Welcome back! ${localStorage.getItem("username")}! 📚`
             : "Welcome to Safal's Book Library! 📚"}
         </h1>
         <h1 className="head-title">
-          <strong>Explore our Library</strong>
+          <span>Explore our Library</span>
         </h1>
       </div>
 
       <div className="main">
-
         <div className="main-container">
           <h3> Our Top Selling </h3>
           <div className="books-grid">

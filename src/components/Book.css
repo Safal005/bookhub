@@ -1,6 +1,6 @@
 .Book{
     margin-bottom: 17px;
-    width: 200px;
+    width: 180px;
     height: auto;
     border: 1px solid hsla(0, 2%, 16%, 0.165);
     border-radius: 10px;
@@ -10,9 +10,11 @@
     box-shadow: 5px 5px 5px hsla(0, 15%, 94%, 0.405);
     transition:transform 0.3s ease,box-shadow 0.3s ease ;
     background-color: #1E1E1E;
+    flex: 0 0 180px; 
+
 }
 .Book:hover{
-    transform:scale(0.9);
+    transform:translateY(-3px)
 }
 .Book-img{
     width: 70%;
