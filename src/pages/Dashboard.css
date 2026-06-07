@@ -327,7 +327,17 @@
         font-size: 20px;
     }
 
-    .welcome-section {
-        padding-top: 120px; 
+    .welcome-section{
+        margin-top: 100px;
+        margin-bottom: 25px;;
+        height: 140px;
+        width: 100%;
     }
+    .welcome-section .head-title{
+        font-size: 1.1rem;
+    }
+    .welcome-section .head-title span{
+        font-size: 1.8rem;
+    }
+
 }
