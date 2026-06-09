@@ -51,7 +51,7 @@ function Dashboard() {
     return (
       <div className="loading-container">
         <p>
-          Loading your personalized library sections (Open Library takes a few seconds)...
+          <i className="fa-solid fa-spinner fa-spin-pulse fa-3x"></i>
         </p>
       </div>
     );
@@ -63,7 +63,7 @@ function Dashboard() {
         <h1 className="head-title">
           {localStorage.getItem("username")
             ? `Welcome back! ${localStorage.getItem("username")}! 📚`
-            : "Welcome to Safal's Book Library! 📚"}
+            : "Welcome to Bookhub! 📚"}
         </h1>
         <h1 className="head-title">
           <span>Explore our Library</span>

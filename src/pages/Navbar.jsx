@@ -40,7 +40,7 @@ function Navbar() {
   return (
     <div className='navbar-containers'>
       <div className='logo-container'>
-        <Link to="/" className='logo'>Safal's E Book</Link>
+        <Link to="/" className='logo'>Bookhub</Link>
       </div>
 
       <div className='search-container'>
