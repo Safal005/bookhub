@@ -71,7 +71,7 @@ function Dashboard() {
       </div>
 
       <div className="main">
-        <div className="main-container">
+        <div className="book-container">
           <h3> Our Top Selling </h3>
           <div className="books-grid">
             {topSellingBooks.map((book) => (
@@ -88,7 +88,7 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="main-container">
+        <div className="book-container">
           <h3>Story </h3>
           <div className="books-grid">
             {storyBooks.map((book) => (
@@ -105,7 +105,7 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="main-container">
+        <div className="book-container">
           <h3>History & Chronicles</h3>
           <div className="books-grid">
             {historyBooks.map((book) => (
@@ -122,7 +122,7 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="main-container">
+        <div className="book-container">
           <h3>Sci-fi </h3>
           <div className="books-grid">
             {scifiBooks.map((book) => (
@@ -139,7 +139,7 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="main-container">
+        <div className="book-container">
           <h3>Programming </h3>
           <div className="books-grid">
             {programmingBooks.map((book) => (
