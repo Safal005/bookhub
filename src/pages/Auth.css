@@ -119,3 +119,49 @@
     color: white;
     font-weight: 600;
 }
+
+
+.role-selector {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    background-color: #292929; 
+    padding: 6px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.role-btn {
+    background: none;
+    border: none;
+    color: #888888; 
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    width: 50%;
+    justify-content: center;
+}
+.role-btn:hover {
+    color: #ffffff;
+}
+.role-btn.active {
+    background-color: #3a3a3a; 
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.role-btn.active .fa-shield-halved {
+    color: #ff4d4d; 
+}
+
+
+.role-btn.active .fa-circle-user {
+    color: #52b7ff;
+}
