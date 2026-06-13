@@ -32,7 +32,7 @@ function Book({ image, title = "Untitled Book", releaseYear = "2024" }) {
           </div>
           <div className="Book-metadata">
             <h4 className="Book-hover-title">{title}</h4>
-            <span className="Book-subtext">Ed. Edition</span>
+            <span className="Book-subtext">{releaseYear}</span>
           </div>
         </div>
       </div>

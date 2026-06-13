@@ -7,7 +7,7 @@ import Dashboard from './pages/Dashboard.jsx';
 import About from './pages/About.jsx';
 import Review from './pages/Review.jsx';
 import Contact from './pages/Contact.jsx';
-import Navbar from './pages/Navbar.jsx'; 
+import Navbar from './components/Navbar.jsx'; 
 
 function NavbarWrapper() {
   const location = useLocation();

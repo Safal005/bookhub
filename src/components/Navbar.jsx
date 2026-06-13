@@ -30,10 +30,14 @@ function Navbar() {
 
   const handleLogout = () => {
     localStorage.removeItem("username");
+    localStorage.removeItem("role");
     setIsLoggedIn(false);
     setUsername("");
     setIsOpen(false);
     setIsMenuOpen(false);
+    
+    window.dispatchEvent(new Event("storage"));
+    
     navigate("/"); 
   };
 
