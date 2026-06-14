@@ -511,4 +511,27 @@
 .books-grid::-webkit-scrollbar {
   display: none;
 }
+
+.category-header-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-right: 0;
+  }
+  .book-container h3 {
+    margin-bottom: 0;
+  }
+  .admin-actions {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 15px;
+  }
+  .admin-btn {
+    flex: 1;
+    max-width: 140px;
+    justify-content: center;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
 }
