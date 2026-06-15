@@ -8,6 +8,7 @@ import About from './pages/About.jsx';
 import Review from './pages/Review.jsx';
 import Contact from './pages/Contact.jsx';
 import Navbar from './components/Navbar.jsx'; 
+import BookDescription from "./pages/BookDescription.jsx";
 
 function NavbarWrapper() {
   const location = useLocation();
@@ -30,6 +31,7 @@ function App() {
         <Route path="/About" element={<About/>} />
         <Route path="/Review" element={<Review/>} />
         <Route path='/Contact' element={<Contact/>}/>
+        <Route path="/book/:id" element={<BookDescription />} />
       </Routes>
     </>
   );

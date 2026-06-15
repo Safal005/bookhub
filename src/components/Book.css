@@ -10,6 +10,7 @@
   flex: 0 0 180px;
   width: 180px;
   cursor: pointer;
+  text-decoration: none;
 }
 .Book-card-wrap {
   position: relative;

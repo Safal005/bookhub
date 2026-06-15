@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useMemo } from "react";
+import { Link } from "react-router-dom";
 import "./Book.css";
-import { useMemo } from "react";
 
-function Book({ image, title = "Untitled Book", releaseYear = "2024" }) {
+function Book({ bookkey, image, title = "Untitled Book", releaseYear = "2024" }) {
   const fallbackImage = "https://via.placeholder.com/150?text=No+Cover";
+  
   const randomRating = useMemo(
     () => (Math.random() * (10 - 8) + 8).toFixed(1),
     []
   );
+
+  const cleanKey = bookkey ? bookkey.replace("/works/", "") : "";
+
   const handleAddToCart = (e) => {
     e.stopPropagation();
+    e.preventDefault(); 
     alert(`Added ${title} to cart`);
   };
 
   return (
-    <div className="Book">
+    <Link to={`/book/${cleanKey}`} className="Book">
       <div className="Book-card-wrap">
         <img src={image || fallbackImage} alt={title} className="Book-img" />
         <div className="Book-overlay">
@@ -40,7 +45,7 @@ function Book({ image, title = "Untitled Book", releaseYear = "2024" }) {
         <h4 className="Book-title-text" title={title}>{title}</h4>
         <span className="Book-subtext">{releaseYear}</span>
       </div>
-    </div>
+    </Link>
   );
 }
 

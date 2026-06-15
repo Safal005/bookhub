@@ -138,6 +138,7 @@ function Dashboard() {
                 {cat.visible.map((book) => (
                   <Book
                     key={book.key}
+                    bookkey={book.key}
                     title={book.title}
                     releaseYear={book.first_publish_year || "Unknown"}
                     image={book.cover_id ? `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg` : "https://via.placeholder.com/150?text=No+Cover"}
