@@ -9,30 +9,27 @@ import Review from './pages/Review.jsx';
 import Contact from './pages/Contact.jsx';
 import Navbar from './components/Navbar.jsx'; 
 import BookDescription from "./pages/BookDescription.jsx";
+import { MainLayout } from './layout/mainlayout.jsx';
 
-function NavbarWrapper() {
-  const location = useLocation();
-  const authPaths = ['/Login', '/SignUp', '/ForgotPassword'];
-  
-  if (authPaths.includes(location.pathname)) return null;
-  
-  return <Navbar />;
-}
 
 function App() {
   return (
     <>
-      <NavbarWrapper />
+
       <Routes>
-        <Route path="/Login" element={<Login />} />
-        <Route path="/SignUp" element={<SignUp />} />
-        <Route path="/ForgotPassword" element={<ForgotPassword />} />
+        <Route element={<MainLayout/>}>
+ 
         <Route path="/" element={<Dashboard />} />
         <Route path="/About" element={<About/>} />
         <Route path="/Review" element={<Review/>} />
         <Route path='/Contact' element={<Contact/>}/>
         <Route path="/book/:id" element={<BookDescription />} />
+        </Route>
+        <Route path="/Login" element={<Login />} />
+        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/ForgotPassword" element={<ForgotPassword />} />
       </Routes>
+    
     </>
   );
 }

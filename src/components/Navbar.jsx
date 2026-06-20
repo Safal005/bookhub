@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import "../pages/Dashboard.css"
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
