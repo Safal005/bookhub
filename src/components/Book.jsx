@@ -1,21 +1,36 @@
 import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "../pages/CartContext.jsx";
 import "./Book.css";
 
-function Book({ bookkey, image, title = "Untitled Book", releaseYear = "2024" }) {
+function Book({
+  bookkey,
+  image,
+  title = "Untitled Book",
+  releaseYear = "2024",
+}) {
+  const { addToCart } = useCart();
   const fallbackImage = "https://via.placeholder.com/150?text=No+Cover";
-  
+
   const randomRating = useMemo(
     () => (Math.random() * (10 - 8) + 8).toFixed(1),
-    []
+    [],
   );
 
   const cleanKey = bookkey ? bookkey.replace("/works/", "") : "";
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
-    e.preventDefault(); 
-    alert(`Added ${title} to cart`);
+    e.preventDefault();
+
+    addToCart({
+      key: cleanKey,
+      title: title,
+      cover_id:
+        image && image.includes("covers.openlibrary.org")
+          ? image.split("/id/")[1]?.split("-")[0]
+          : null,
+    });
   };
 
   return (
@@ -42,7 +57,9 @@ function Book({ bookkey, image, title = "Untitled Book", releaseYear = "2024" })
         </div>
       </div>
       <div className="Book-info-block">
-        <h4 className="Book-title-text" title={title}>{title}</h4>
+        <h4 className="Book-title-text" title={title}>
+          {title}
+        </h4>
         <span className="Book-subtext">{releaseYear}</span>
       </div>
     </Link>

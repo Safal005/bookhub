@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import "../pages/Dashboard.css"
+import { useCart } from '../pages/CartContext.jsx';
+import "../pages/Dashboard.css";
+import "../components/Navbar.css";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
   const navigate = useNavigate();
+  const { cart } = useCart();
+
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("username");
@@ -36,10 +41,10 @@ function Navbar() {
     setUsername("");
     setIsOpen(false);
     setIsMenuOpen(false);
-    
+
     window.dispatchEvent(new Event("storage"));
-    
-    navigate("/"); 
+
+    navigate("/");
   };
 
   return (
@@ -58,6 +63,15 @@ function Navbar() {
         <Link to="/About" className='nav-links' onClick={() => setIsMenuOpen(false)}>About</Link>
         <Link to="/Review" className='nav-links' onClick={() => setIsMenuOpen(false)}>Review</Link>
         <Link to="/Contact" className='nav-links' onClick={() => setIsMenuOpen(false)}>Contact</Link>
+        
+        <Link to="/cart" className='nav-links nav-cart-link' onClick={() => setIsMenuOpen(false)}>
+          <i className="fa-solid fa-shopping-cart"></i>
+          {totalItems > 0 && (
+            <span className="nav-cart-badge">
+              {totalItems}
+            </span>
+          )}
+        </Link>
 
         <div className="mobile-account-links">
           {isLoggedIn ? (
@@ -84,7 +98,7 @@ function Navbar() {
             {isLoggedIn ? (
               <>
                 <p>{username}</p>
-                <button className='dropdown-login' onClick={handleLogout} style={{border: 'none', cursor: 'pointer'}}>
+                <button className='dropdown-logout-btn' onClick={handleLogout}>
                   Logout
                 </button>
               </>
