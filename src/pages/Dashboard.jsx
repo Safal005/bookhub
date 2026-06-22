@@ -1,60 +1,39 @@
 import React, { useState, useEffect } from "react";
 import Book from "../components/Book.jsx";
+import { useCart } from "./CartContext.jsx";
 import "../components/Book.css";
 import "../pages/Dashboard.css";
 
 function Dashboard() {
-  const [categories, setCategories] = useState({
-    top: { name: "Our Top Selling", url: "accessible_book", visible: [], pool: [] },
-    story: { name: "Thriller", url: "thriller", visible: [], pool: [] },
-    history: { name: "History & Chronicles", url: "history", visible: [], pool: [] },
-    scifi: { name: "Sci-fi", url: "science_fiction", visible: [], pool: [] },
-    programming: { name: "Programming", url: "programming_languages", visible: [], pool: [] }
-  });
-
-  const [loading, setLoading] = useState(true);
+  const { categories, setCategories, apiLoading, hasFetched } = useCart();
+  
+  const [introLoading, setIntroLoading] = useState(!hasFetched);
   const [activeModal, setActiveModal] = useState(null);
   const [modalMode, setModalMode] = useState("");      
   const [isAdminUser, setIsAdminUser] = useState(localStorage.getItem("role") === "admin");
   const [currentUsername, setCurrentUsername] = useState(localStorage.getItem("username") || "");
 
   useEffect(() => {
-    const fetchAllCategories = async () => {
-      try {
-        const keys = Object.keys(categories);
-        const requests = keys.map(k => 
-          fetch(`https://openlibrary.org/subjects/${categories[k].url}.json?limit=24`).then(r => r.json())
-        );
-        
-        const results = await Promise.all(requests);
-        
-        setCategories(prev => {
-          const updated = { ...prev };
-          keys.forEach((key, i) => {
-            const works = results[i].works || [];
-            updated[key].visible = works.slice(0, 16);
-            updated[key].pool = works.slice(16, 24);
-          });
-          return updated;
-        });
-      } catch (error) {
-        console.error("Network error:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    if (hasFetched) {
+      setIntroLoading(false);
+      return;
+    }
 
+    const timer = setTimeout(() => {
+      setIntroLoading(false);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, [hasFetched]);
+
+  useEffect(() => {
     const handleStorageChange = () => {
       setIsAdminUser(localStorage.getItem("role") === "admin");
       setCurrentUsername(localStorage.getItem("username") || "");
     };
 
-    fetchAllCategories();
     window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
+    return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
   const openModal = (catKey, mode) => {
@@ -89,10 +68,16 @@ function Dashboard() {
     closeModal();
   };
 
-  if (loading) {
+  if (introLoading || (apiLoading && !hasFetched)) {
     return (
-      <div className="loading-container">
-        <p><i className="fa-solid fa-spinner fa-spin-pulse fa-3x"></i></p>
+      <div className="splash-screen-container">
+        <div className="splash-content">
+          <h1 className="splash-logo">Bookhub</h1>
+          <div className="splash-loader-bar">
+            <div className="splash-progress"></div>
+          </div>
+          <p className="splash-subtitle">Curating your personal library...</p>
+        </div>
       </div>
     );
   }

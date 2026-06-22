@@ -50,7 +50,7 @@ function Navbar() {
   return (
     <div className='navbar-containers'>
       <div className='logo-container'>
-        <Link to="/" className='logo'>Bookhub</Link>
+        <a href="/" className='logo'>Bookhub</a>
       </div>
 
       <div className='search-container'>
