@@ -3,7 +3,7 @@ import Book from "../components/Book.jsx";
 import { useCart } from "./CartContext.jsx";
 import "../components/Book.css";
 import "../pages/Dashboard.css";
-
+import Footer from '../components/Footer.jsx';
 function Dashboard() {
   const { categories, setCategories, apiLoading, hasFetched } = useCart();
   
@@ -163,17 +163,8 @@ function Dashboard() {
           </div>
         </div>
       )}
-
-      <div className="footer">
-        <p className="footer-text">&copy; 2026 Safal Khanal. All rights reserved.</p>
-        <div className="footer-icons">
-          <a href="#" className="footer-icon"><i className="fa-brands fa-linkedin"></i></a>
-          <a href="https://github.com/Safal005" target="_blank" className="footer-icon"><i className="fa-brands fa-github"></i></a>
-          <a href="#" target="_blank" className="footer-icon"><i className="fa-brands fa-facebook"></i></a>
-          <a href="#" className="footer-icon"><i className="fa-brands fa-x-twitter"></i></a>
-          <a href="#" className="footer-icon"><i className="fa-brands fa-instagram"></i></a>
-        </div>
-      </div>
+      <Footer/>
+      
     </>
   );
 }
