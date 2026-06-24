@@ -308,23 +308,7 @@
   border-color: #ef4444;
   box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
 }
-.footer {
-  background-color: #121212;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-top: 1px solid #333;
-  color: #b0b0b0;
-}
-.footer-text {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  margin-right: 20px;
-}
-.footer-icon {
-  width: 17px;
-}
+
 @media (max-width: 717px) {
   .welcome-section {
     margin-top: 100px;
