@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
-import Book from "../components/Book.jsx";
-import { useCart } from "./CartContext.jsx";
-import "../components/Book.css";
-import "../pages/Dashboard.css";
-import Footer from '../components/Footer.jsx';
+import Book from "../../components//shared/Book.jsx";
+import { useCart } from "../../context/CartContext.jsx";
+import "./Dashboard.css";
+
 function Dashboard() {
   const { categories, setCategories, apiLoading, hasFetched } = useCart();
-  
+
   const [introLoading, setIntroLoading] = useState(!hasFetched);
   const [activeModal, setActiveModal] = useState(null);
-  const [modalMode, setModalMode] = useState("");      
-  const [isAdminUser, setIsAdminUser] = useState(localStorage.getItem("role") === "admin");
-  const [currentUsername, setCurrentUsername] = useState(localStorage.getItem("username") || "");
+  const [modalMode, setModalMode] = useState("");
+  const [isAdminUser, setIsAdminUser] = useState(
+    localStorage.getItem("role") === "admin",
+  );
+  const [currentUsername, setCurrentUsername] = useState(
+    localStorage.getItem("username") || "",
+  );
 
   useEffect(() => {
     if (hasFetched) {
@@ -47,7 +50,7 @@ function Dashboard() {
   };
 
   const handleAddBook = (catKey, bookIndex) => {
-    setCategories(prev => {
+    setCategories((prev) => {
       const cat = { ...prev[catKey] };
       const selectedBook = cat.pool[bookIndex];
       cat.pool = cat.pool.filter((_, i) => i !== bookIndex);
@@ -58,11 +61,11 @@ function Dashboard() {
   };
 
   const handleDeleteBook = (catKey, bookIndex) => {
-    setCategories(prev => {
+    setCategories((prev) => {
       const cat = { ...prev[catKey] };
       const selectedBook = cat.visible[bookIndex];
       cat.visible = cat.visible.filter((_, i) => i !== bookIndex);
-      cat.pool = [...cat.pool, selectedBook]; 
+      cat.pool = [...cat.pool, selectedBook];
       return { ...prev, [catKey]: cat };
     });
     closeModal();
@@ -90,7 +93,9 @@ function Dashboard() {
             ? `Welcome back, ${currentUsername}! 📚`
             : "Welcome to Bookhub! 📚"}
         </h1>
-        <h1 className="head-title"><span>Explore our Library</span></h1>
+        <h1 className="head-title">
+          <span>Explore our Library</span>
+        </h1>
       </div>
 
       <div className="main">
@@ -102,15 +107,15 @@ function Dashboard() {
                 <h3>{cat.name}</h3>
                 {isAdminUser && (
                   <div className="admin-actions">
-                    <button 
-                      className="admin-btn add-btn" 
+                    <button
+                      className="admin-btn add-btn"
                       onClick={() => openModal(key, "add")}
                       disabled={cat.pool.length === 0}
                     >
                       <i className="fa-solid fa-plus"></i> Add Book
                     </button>
-                    <button 
-                      className="admin-btn delete-btn" 
+                    <button
+                      className="admin-btn delete-btn"
                       onClick={() => openModal(key, "delete")}
                       disabled={cat.visible.length === 0}
                     >
@@ -126,7 +131,11 @@ function Dashboard() {
                     bookkey={book.key}
                     title={book.title}
                     releaseYear={book.first_publish_year || "Unknown"}
-                    image={book.cover_id ? `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg` : "https://via.placeholder.com/150?text=No+Cover"}
+                    image={
+                      book.cover_id
+                        ? `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`
+                        : "https://via.placeholder.com/150?text=No+Cover"
+                    }
                   />
                 ))}
               </div>
@@ -140,20 +149,34 @@ function Dashboard() {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h4>
-                Select a Book to {modalMode === "add" ? "Add" : "Delete"} ({categories[activeModal].name})
+                Select a Book to {modalMode === "add" ? "Add" : "Delete"} (
+                {categories[activeModal].name})
               </h4>
-              <button className="close-modal-btn" onClick={closeModal}>&times;</button>
+              <button className="close-modal-btn" onClick={closeModal}>
+                &times;
+              </button>
             </div>
             <div className="modal-pool-grid">
-              {(modalMode === "add" ? categories[activeModal].pool : categories[activeModal].visible).map((book, index) => (
-                <div 
-                  className={`pool-item-card ${modalMode === "delete" ? "delete-card-hover" : ""}`} 
-                  key={book.key} 
-                  onClick={() => modalMode === "add" ? handleAddBook(activeModal, index) : handleDeleteBook(activeModal, index)}
+              {(modalMode === "add"
+                ? categories[activeModal].pool
+                : categories[activeModal].visible
+              ).map((book, index) => (
+                <div
+                  className={`pool-item-card ${modalMode === "delete" ? "delete-card-hover" : ""}`}
+                  key={book.key}
+                  onClick={() =>
+                    modalMode === "add"
+                      ? handleAddBook(activeModal, index)
+                      : handleDeleteBook(activeModal, index)
+                  }
                 >
-                  <img 
-                    src={book.cover_id ? `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg` : "https://via.placeholder.com/150?text=No+Cover"} 
-                    alt={book.title} 
+                  <img
+                    src={
+                      book.cover_id
+                        ? `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`
+                        : "https://via.placeholder.com/150?text=No+Cover"
+                    }
+                    alt={book.title}
                   />
                   <h5>{book.title}</h5>
                   <p>{book.first_publish_year || "Unknown Year"}</p>
@@ -163,8 +186,6 @@ function Dashboard() {
           </div>
         </div>
       )}
-      <Footer/>
-      
     </>
   );
 }

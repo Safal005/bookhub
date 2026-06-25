@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCart } from '../pages/CartContext.jsx';
-import "../pages/Dashboard.css";
-import "../components/Navbar.css";
+import { useCart } from '../../context/CartContext.jsx';
+import "./Navbar.css";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,17 +1,16 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import React from "react";
-import Login from "./pages/Login.jsx";
-import SignUp from "./pages/SignUp.jsx";
-import ForgotPassword from "./pages/Forgotpassword.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
-import About from "./pages/About.jsx";
-import Review from "./pages/Review.jsx";
-import Contact from "./pages/Contact.jsx";
-import Navbar from "./components/Navbar.jsx";
-import BookDescription from "./pages/BookDescription.jsx";
-import CartPage from "./pages/CartPage.jsx";
-import { MainLayout } from "./layout/mainlayout.jsx";
-import { useCart } from "./pages/CartContext.jsx";
+import Login from "./pages/auth/Login.jsx";
+import SignUp from "./pages/auth/SignUp.jsx";
+import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
+import Dashboard from "./pages/dashboard/Dashboard.jsx";
+import About from "./pages/static/About.jsx";
+import Review from "./pages/static/Review.jsx";
+import Contact from "./pages/static/Contact.jsx";
+import BookDescription from "./pages/dashboard/BookDescription.jsx";
+import CartPage from "./pages/cart/CartPage.jsx";
+import { useCart } from "./context/CartContext.jsx";
+import { MainLayout } from "./components/layout/mainlayout.jsx";
 
 function App() {
   const { toastMessage } = useCart();

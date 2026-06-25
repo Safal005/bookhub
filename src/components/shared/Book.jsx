@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../pages/CartContext.jsx";
+import { useCart } from "../../context/CartContext.jsx";
 import "./Book.css";
 
 function Book({

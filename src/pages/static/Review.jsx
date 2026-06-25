@@ -1,5 +1,5 @@
 import React from 'react';
-import '../pages/Pages.css';
+import './Pages.css';
 
 const REVIEWS = [
   { id: 1, name: "Suman Neupane", rating: 5, comment: "Best digital library interface I've used in Nepal. Very fast!" },
