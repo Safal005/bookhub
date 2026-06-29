@@ -1,12 +1,29 @@
-# React + Vite
+# BookHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React web application for browsing books, viewing their descriptions, and managing a shopping cart. Built as part of a Phase 2 project focusing on dynamic client-side routing and centralized state management.
 
-Currently, two official plugins are available:
+>**Development History:** This repository represents **Phase 2** of the project, focusing on moving to a modular folder architecture, dynamic client-side routing, and centralized state management. You can find the original static prototype in the [Safal-E-Library (Phase 1)](https://github.com/Safal005/Safal-E-Library) repository.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Outputs (Screenshots)
 
-## Expanding the ESLint configuration
+* **Main Dashboard:** Displays the grid layout of available books.
+![Dashboard](./screenshots/dashboard.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **Login Page:** The entry point for user authentication.
+![Login Page](./screenshots/auth-page.png)
+
+* **Admin View:** Shows the elevated dashboard where users with admin rights can add or delete books from the inventory.
+![Admin Dashboard](./screenshots/admin-dashboard.png)
+
+* **Book Description Page:** Displays the detailed information for a selected book.
+![Book Details](./screenshots/book-detail.png)
+
+* **Shopping Cart Page:** Displays the items added to the cart, dynamically updated using React Context.
+![Cart Page](./screenshots/cart-page.png)
+
+## Built With
+
+* React
+* Vite
+* React Router (Client-side routing)
+* React Context API (Global cart tracking)
